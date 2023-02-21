@@ -10,36 +10,34 @@ void times_table(void)
 {
 	int i;
 	int j;
-	int periodnum;
+	int product;
 
 	for (i = 0; i < 10; i++)
 	{
 		for (j = 0; j < 10; j++)
 		{
-			if (((i * j) % 10) >= 0)
+			product = i * j;
+			if (((product) % 10) >= 0)
 			{
-				if (((i * j) / 10) != 0)
+				if (((product) / 10) != 0)
 				{
-					_putchar(((i * j) / 10) + '0');
-					_putchar(((i * j) % 10) + '0');
-					periodnum = 1;
+					_putchar((product / 10) + '0');
+					_putchar((product % 10) + '0');
 				}
 				else
 				{
-					_putchar(((i * j) % 10) + '0');
-					periodnum = 2;
+					_putchar((product % 10) + '0');
 				}
 			}
 			else
 			{
-				_putchar((i * j) + '0');
-				periodnum = 2;
+				_putchar(product + '0');
 			}
 			if (j < 9)
 			{
 				_putchar(',');
 				_putchar(' ');
-				if (periodnum == 2)
+				if ((i * (j + 1)) < 10)
 				{
 					_putchar(' ');
 				}
