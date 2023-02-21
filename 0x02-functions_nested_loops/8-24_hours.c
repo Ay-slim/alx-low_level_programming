@@ -21,7 +21,7 @@ void jack_bauer(void)
 			{
 				for (l = 0; l < 10; l++)
 				{
-					if ((i != 1 || i != 0) && j > 3)
+					if (i == 2 && j > 3)
 					{
 						continue;
 					}
