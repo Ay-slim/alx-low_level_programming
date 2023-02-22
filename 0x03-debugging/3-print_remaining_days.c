@@ -16,10 +16,12 @@ void print_remaining_days(int month, int day, int year)
 	bool div_4 =  year % 4 == 0;
 	bool div_100 = year % 100 == 0;
 	bool div_400 = year % 400 == 0;
+	bool bi = (month == 9 && day > 273) || (month == 4 && day > 120);
+	bool ri = (month == 6 && day > 181) || (month == 6 && day > 304);
 
 	if (div_4 && (!div_100 || (div_100 && div_400)))
 	{
-		if (month == 2 && day > 60)
+		if ((month == 2 && day > 60) || bi || ri)
 		{
 			printf("Invalid date: %02d/%02d/%04d\n", month, day - 31, year);
 			return;
@@ -33,7 +35,7 @@ void print_remaining_days(int month, int day, int year)
 	}
 	else
 	{
-		if (month == 2 && day >= 60)
+		if ((month == 2 && day >= 60) || bi || ri)
 		{
 			printf("Invalid date: %02d/%02d/%04d\n", month, day - 31, year);
 		}
