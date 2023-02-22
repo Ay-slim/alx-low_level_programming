@@ -13,15 +13,17 @@
 
 void print_remaining_days(int month, int day, int year)
 {
-	bool div_4;
-	bool div_100;
-	bool div_400;
+	bool div_4 =  year % 4 == 0;
+	bool div_100 = year % 100 == 0;
+	bool div_400 = year % 400 == 0;
 
-	div_4 = year % 4 == 0;
-	div_100 = year % 100 == 0;
-	div_400 = year % 400 == 0;
 	if (div_4 && (!div_100 || (div_100 && div_400)))
 	{
+		if (month == 2 && day > 60)
+		{
+			printf("Invalid date: %02d/%02d/%04d\n", month, day - 31, year);
+			return;
+		}
 		if (month >= 2 && day > 60)
 		{
 			day++;
