@@ -28,7 +28,7 @@ char replace_val(char c)
 	nums[4] = '1';
 	while (i < 5)
 	{
-		if (toupper(c) == strings[i])
+		if (isalpha(c) && toupper(c) == strings[i])
 		{
 			return (nums[i]);
 		}
