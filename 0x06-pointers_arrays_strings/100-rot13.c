@@ -13,21 +13,20 @@ char *rot13(char *src)
 {
 	int i;
 	int len;
-	bool m_check;
+	int alpha_check;
+	int full_check;
+	int m_check;
 
 	i = 0;
 	len = strlen(src);
 	while (i < len)
 	{
-		m_check = toupper(src[i]) > 'M' && toupper(src[i]) <= 'Z';
-		if (isalpha(src[i]) && m_check)
-		{
-			src[i] = src[i] - 13;
-		}
-		else if (isalpha(src[i]))
-		{
-			src[i] = src[i] + 13;
-		}
+		alpha_check = isalpha(src[i]);
+		m_check = 1;
+		if (alpha_check && toupper(src[i]) > 'M' && toupper(src[i]) <= 'Z')
+			m_check = -1;
+		full_check = m_check * (alpha_check / 1024) * 13;
+		src[i] = src[i] + full_check;
 		i++;
 	}
 	return (src);
