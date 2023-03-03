@@ -5,6 +5,27 @@
 #include <ctype.h>
 
 /**
+ * check_length - See if the sum length is more than buffer size
+ * @a: Pointer to first character
+ * @b: Pointer to second character
+ * @size_r: Buffer size
+ * Return: Integer shows whether the number of sum digits exceeds buffer size
+ */
+
+int check_length(char *a, char *b, int size_r)
+{
+	int nDigits;
+	char sum_str[200];
+	int n1 = atoi(a);
+	int n2 = atoi(b);
+	int sum = n1 + n2;
+
+	sprintf(sum_str, "%d", sum);
+	nDigits = strlen(sum_str);
+	return (nDigits >= size_r);
+}
+
+/**
  * swap_char - Function to swap two characters
  * @a: Pointer to first character
  * @b: Pointer to second character
@@ -54,10 +75,10 @@ void rev_string(char *s)
  * @r: Buffer to store the sum
  * @max_len: The length of the longer between both input strings
  * @min_len: The length of the shorter between both input strings
- * Return: Pointer to the sum of both numbers represented as a string
+ * Return: Void
  */
 
-char *string_add(char *n1, char *n2, char *r, int max_len, int min_len)
+void string_add(char *n1, char *n2, char *r, int max_len, int min_len)
 {
 	int i = max_len;
 	int j = min_len;
@@ -84,16 +105,17 @@ char *string_add(char *n1, char *n2, char *r, int max_len, int min_len)
 			remchar = rem + '0';
 			r[end_index - 2] = sumchar;
 			r[end_index - 1] = remchar;
+			r[end_index] = '\0';
 		}
 		else
 		{
 			end_index += 1;
 			r[end_index - 1] = sumchar;
+			r[end_index] = '\0';
 		}
 		i--;
 		j--;
 	}
-	return (r);
 }
 
 /**
@@ -111,12 +133,11 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 	int n2_len;
 	int max_len;
 	int min_len;
-	int sum_len;
 	char *longer_char;
 	char *shorter_char;
-	char *ret_value;
-	int ret_index;
 
+	if (check_length(n1, n2, size_r))
+		return (0);
 	n1_len = strlen(n1);
 	n2_len = strlen(n2);
 	if (n1_len >= n2_len)
@@ -133,17 +154,7 @@ char *infinite_add(char *n1, char *n2, char *r, int size_r)
 		longer_char = n2;
 		shorter_char = n1;
 	}
-	ret_value = string_add(longer_char, shorter_char, r, max_len, min_len);
-	ret_index = strlen(ret_value);
-	while (ret_index > 0)
-	{
-		if (!isdigit(ret_value[ret_index]))
-			ret_value[ret_index] = '\0';
-		ret_index--;
-	}
+	string_add(longer_char, shorter_char, r, max_len, min_len);
 	rev_string(r);
-	sum_len = strlen(r);
-	if (sum_len >= size_r)
-		return (0);
-	return (ret_value);
+	return (r);
 }
