@@ -23,7 +23,7 @@ char replace_val(char c)
 	strings[4] = 'L';
 	nums[0] = '4';
 	nums[1] = '3';
-	nums[2] = 'O';
+	nums[2] = '0';
 	nums[3] = '7';
 	nums[4] = '1';
 	while (i < 5)
