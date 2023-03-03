@@ -30,9 +30,9 @@ void print_number(int n)
 	int ka;
 	int quo;
 
-	if (n == 0)
+	if (n >= 0 && n < 10)
 	{
-		_putchar(0 + '0');
+		_putchar(n + '0');
 		return;
 	}
 	ka = pos(n, 10);
@@ -41,6 +41,11 @@ void print_number(int n)
 	{
 		quo = n * -1;
 		_putchar('-');
+		if (n < 0 && n > -10)
+		{
+			_putchar(n * -1 + '0');
+			return;
+		}
 	}
 	while (ka > 5)
 	{
