@@ -15,7 +15,7 @@ char *_strchr(char *s, char c)
 
 	s_len = strlen(s);
 	i = 0;
-	while (i < s_len)
+	while (i <= s_len)
 	{
 		if (s[i] == c)
 			return (&(s[i]));
