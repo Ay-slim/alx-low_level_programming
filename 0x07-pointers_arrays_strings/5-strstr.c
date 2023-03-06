@@ -27,7 +27,6 @@ char *_strstr(char *haystack, char *needle)
 		j = i;
 		while (j < i + needle_len)
 		{
-			printf("Haystack: %c, Needle: %c\n", haystack[j], needle[needle_index]);
 			if (haystack[j] != needle[needle_index])
 			{
 				all_match = 0;
