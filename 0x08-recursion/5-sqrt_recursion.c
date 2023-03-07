@@ -1,4 +1,5 @@
 #include "main.h"
+#include <stdio.h>
 
 /**
  * get_sqrt - Calculate the square root of a number
@@ -9,17 +10,16 @@
  */
 int get_sqrt(int start, int n)
 {
+	printf("Start: %d, square: %d\n", start, start * start);
 	if (n < 0)
 		return (-1);
 	if (n <= 1)
 		return (n);
-	if (start == 1)
-		return (-1);
-	if (start == 0)
-		start = n / 2;
 	if (start * start == n)
 		return (start);
-	return (get_sqrt(start - 1, n));
+	if (start == n / 2)
+		return (-1);
+	return (get_sqrt(start + 1, n));
 }
 
 /**
