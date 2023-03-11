@@ -1,5 +1,25 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <ctype.h>
+
+/**
+ * check_chars - Check if there are any non digit chars
+ * @str: Input string to check
+ * Return: 0 if there are non digits. 1 otherwise
+ */
+
+int check_chars(char *str)
+{
+	int i = 0;
+
+	while (*(str + i))
+	{
+		if (!isdigit(*(str + i)))
+			return (0);
+		i++;
+	}
+	return (1);
+}
 
 /**
  * main - Prints arguments
@@ -22,7 +42,7 @@ int main(int argc, char *argv[])
 
 	for (i = 1; i < argc; i++)
 	{
-		if (!atoi(argv[i]))
+		if (!atoi(argv[i]) || !check_chars(argv[i]))
 		{
 			printf("%s\n", ERR_MSG);
 			return (1);
