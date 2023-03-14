@@ -19,7 +19,7 @@ char *argstostr(int ac, char **av)
 
 	if (!ac || !av)
 		return (NULL);
-	for (i = 1; i < ac; i++)
+	for (i = 0; i < ac; i++)
 	{
 		total_len += strlen(av[i]);
 	}
@@ -27,7 +27,7 @@ char *argstostr(int ac, char **av)
 	concat_str = malloc(total_len * sizeof(char));
 	if (!concat_str)
 		return (NULL);
-	for (j = 1; j < ac; j++)
+	for (j = 0; j < ac; j++)
 	{
 		for (k = 0; k < strlen(av[j]); k++)
 		{
