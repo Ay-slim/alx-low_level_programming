@@ -18,10 +18,10 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 	unsigned int i;
 	char *scat;
 
-	if (!s1 || !s2)
-	{
-		return (NULL);
-	}
+	if (!s1)
+		s1 = "";
+	if (!s2)
+		s2 = "";
 	s1_len = strlen(s1);
 	s2_len = strlen(s2);
 	if (n > s2_len)
