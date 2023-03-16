@@ -13,6 +13,7 @@
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
 	unsigned int s1_len;
+	unsigned int s2_len;
 	unsigned int resv_len;
 	unsigned int i;
 	char *scat;
@@ -22,7 +23,15 @@ char *string_nconcat(char *s1, char *s2, unsigned int n)
 		return (NULL);
 	}
 	s1_len = strlen(s1);
-	resv_len = s1_len + n + 1;
+	s2_len = strlen(s2);
+	if (n > s2_len)
+	{
+		resv_len = s1_len + s2_len + 1;
+	}
+	else
+	{
+		resv_len = s1_len + n + 1;
+	}
 	scat = malloc(resv_len);
 	if (!scat)
 		return (NULL);
