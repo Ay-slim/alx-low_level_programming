@@ -10,7 +10,8 @@
 char **strtow(char *str)
 {
 	char **full_str;
-	char *temp_str = "start";
+	char temp_str[2000];
+	char *temp_ptr = &(temp_str[0]);
 	int inner_size;
 	unsigned int i;
 	int j;
@@ -26,23 +27,25 @@ char **strtow(char *str)
 
 	if (str == NULL || str == empty_str)
 		return (NULL);
-	for (i = 0; i < len; i++)
+	for (i = 0; i <= len; i++)
 	{
+		if (i == len)
+			*(temp_ptr + i) = '\0';
 		if (str[i] != ' ')
 		{
-			*(temp_str + temp_ind) = str[i];
+			*(temp_ptr + temp_ind) = str[i];
 			inner++;
 			temp_ind++;
 		}
-		if (str[i] == ' ' && str[i - 1] && str[i - 1] != ' ')
+		if (str[i] == ' ' && i > 0 && str[i - 1] && str[i - 1] != ' ')
 		{
 			outer += 1;
 			mult += inner * multi;
 			multi *= 10;
 			inner = 0;
-			*(temp_str + temp_ind) = '\0';
-			*(temp_str + (temp_ind + 1)) = ' ';
-			temp_ind += 2;
+			*(temp_ptr + temp_ind) = '\0';
+			*(temp_ptr + (temp_ind + 1)) = ' ';
+			temp_ind += 3;
 		}
 	}
 	full_str = malloc(outer * sizeof(char *));
@@ -63,7 +66,7 @@ char **strtow(char *str)
 			return (NULL);
 		for (k = 0; k <= inner_size; k++)
 		{
-			full_str[j][k] = temp_str[inner_ind];
+			full_str[j][k] = *(temp_ptr + inner_ind);
 			inner_ind++;
 		}	
 		mult /= 10;
