@@ -19,9 +19,9 @@ list_t *add_node_end(list_t **head, const char *str)
 	node_to_add->str = strdup(str);
 	node_to_add->len = strlen(str);
 	node_to_add->next = NULL;
-	if (node_ptr == NULL)
+	if (*head == NULL)
 	{
-		**head = *node_to_add;
+		*head = node_to_add;
 		return (*head);
 	}
 	while (node_ptr != NULL)
