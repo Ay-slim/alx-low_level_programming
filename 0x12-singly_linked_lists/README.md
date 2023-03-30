@@ -24,3 +24,6 @@ You are allowed to use strdup
 4-free_list.c: Write a function that frees a list_t list.
 Prototype: void free_list(list_t *head);
 
+100-first.c:Write a function that prints You're beat! and yet, you must allow,\nI bore my house upon my back!\n before the main function is executed.
+You are allowed to use the printf function
+
