@@ -11,6 +11,8 @@ void free_listint2(listint_t **head)
 	listint_t *holder;
 	listint_t *head_clone = *head;
 
+	if (head == NULL)
+		return;
 	while (head_clone)
 	{
 		holder = head_clone->next;
