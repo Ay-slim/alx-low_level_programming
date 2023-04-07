@@ -1,6 +1,5 @@
 #include "main.h"
 #include <string.h>
-#include <stdio.h>
 /**
  * raise - Calculate the power of a number to another
  * @base: Base number
@@ -39,7 +38,7 @@ unsigned int binary_to_uint(const char *b)
 	unsigned int counter = 0;
 	int len;
 
-	if (!b)
+	if (b == NULL)
 		return (0);
 	len = strlen(b) - 1;
 	while (len >= 0)
@@ -52,3 +51,4 @@ unsigned int binary_to_uint(const char *b)
 	}
 	return (num);
 }
+
