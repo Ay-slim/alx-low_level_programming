@@ -1,7 +1,5 @@
 #include "main.h"
 #include <stdlib.h>
-#include <stdio.h>
-
 /**
  * add_nodeint - Adds a node at the start of a linkedlist
  * @head: A pointer to the pointer pointing to the head of the ll
@@ -33,7 +31,7 @@ size_t print_listint(const listint_t *h)
 
 	while (next_ptr != NULL)
 	{
-		printf("%d", next_ptr->n);
+		_putchar(next_ptr->n + '0');
 		len++;
 		next_ptr = next_ptr->next;
 	}
@@ -64,3 +62,4 @@ void print_binary(unsigned long int n)
 	}
 	print_listint(head);
 }
+
