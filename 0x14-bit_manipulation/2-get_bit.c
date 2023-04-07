@@ -9,8 +9,8 @@
 int get_bit(unsigned long int n, unsigned int index)
 {
 	int bit;
-	int bit_holder[32] = {0};
-	unsigned int tracker = 31;
+	int bit_holder[64] = {0};
+	unsigned int tracker = 63;
 
 	while (n)
 	{
@@ -19,8 +19,8 @@ int get_bit(unsigned long int n, unsigned int index)
 		n = n >> 1;
 		tracker--;
 	}
-	if (index > 31)
+	if (index > 63)
 		return (-1);
-	return (bit_holder[31 - index]);
+	return (bit_holder[63 - index]);
 }
 
