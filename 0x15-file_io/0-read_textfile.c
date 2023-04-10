@@ -1,10 +1,12 @@
 #include "main.h"
 #include <stdlib.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
 
+/**
+ * read_textfile - Reads a specified text file
+ * @filename: Filename to read
+ * @letters: Letters to read from file
+ * Return: Written file
+ */
 ssize_t read_textfile(const char *filename, size_t letters)
 {
 	ssize_t opened_file;
@@ -37,5 +39,7 @@ ssize_t read_textfile(const char *filename, size_t letters)
 		free(bfr);
 		return (0);
 	}
+	free(bfr);
+	close(opened_file);
 	return (written_file);
 }
