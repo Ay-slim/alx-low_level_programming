@@ -12,8 +12,8 @@ int _putchar(char c);
  */
 typedef struct listint_s
 {
-    int n;
-    struct listint_s *next;
+	int n;
+	struct listint_s *next;
 } listint_t;
 unsigned int binary_to_uint(const char *b);
 void print_binary(unsigned long int n);
