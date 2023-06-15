@@ -1,14 +1,5 @@
 #include "lists.h"
 /**
- * free_deleted - Free deleted nodes
- * @ptr: Pointer to deleted node
- * Return: Nothing
- */
-void free_deleted(dlistint_t *ptr)
-{
-	free(ptr);
-}
-/**
  * delete_dnodeint_at_index - Delete node from index
  * @head: Pointer to list head
  * @index: Index to delete from
@@ -25,7 +16,7 @@ int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 	{
 		del = *head;
 		(*head) = (*head)->next;
-		if(*head != NULL)
+		if (*head != NULL)
 			(*head)->prev = NULL;
 		free(del);
 		return (1);
