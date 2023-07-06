@@ -13,12 +13,9 @@ hash_table_t *hash_table_create(unsigned long int size)
 	if (!table_ptr)
 		return (NULL);
 	table_ptr->size = size;
-	table_ptr->array = calloc(size, sizeof(hash_node_t));
+	table_ptr->array = calloc(size, sizeof(hash_node_t *));
 	if (!table_ptr->array)
-	{
-		free(table_ptr);
 		return (NULL);
-	}
 	for (i = 0; i < size; i++)
 		table_ptr->array[i] = NULL;
 	return (table_ptr);
