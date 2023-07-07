@@ -10,6 +10,8 @@ char *hash_table_get(const hash_table_t *ht, const char *key)
 	unsigned long int idx = key_index((const unsigned char *)key, ht->size);
 	hash_node_t *elem = ht->array[idx];
 
+	if (!ht || !key)
+		return (NULL);
 	while (elem)
 	{
 		if (strcmp(key, elem->key) == 0)
