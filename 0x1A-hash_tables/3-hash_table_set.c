@@ -16,7 +16,7 @@ int hash_table_set(hash_table_t *ht, const char *key, const char *value)
 
 	if (!new_elem)
 		return (0);
-	if (!key || strcmp(key_t, "") == 0)
+	if (!ht || !value || !key || strcmp(key_t, "") == 0)
 	{
 		free(key_t);
 		free(value_t);
